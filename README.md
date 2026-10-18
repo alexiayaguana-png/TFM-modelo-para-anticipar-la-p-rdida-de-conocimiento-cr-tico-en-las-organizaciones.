@@ -1,0 +1,1 @@
+# TFM-modelo-para-anticipar-la-p-rdida-de-conocimiento-cr-tico-en-las-organizaciones.

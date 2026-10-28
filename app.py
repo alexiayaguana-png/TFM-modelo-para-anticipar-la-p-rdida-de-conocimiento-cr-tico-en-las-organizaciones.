@@ -65,14 +65,13 @@ p_crit = 3 if "Mayoritariamente tácito" in nivel_tacito or "Alto" in impacto_op
 p_trans = 3 if "Sin canales" in canales_transferencia else (2 if "informales" in canales_transferencia else 1)
 p_clima = 3 if "competitivo" in clima_organizacional else (2 if "neutro" in clima_organizacional else 1)
 
-# Regla integradora de decisión
-# Si hay salida inminente (p_demo=3) + conocimiento crítico (p_crit=3) + mala transferencia (p_trans=3) => RIESGO ALTO
+# Regla integradora de decisión ajustada para el Escenario C (score global de 2.25)
 score_total = (p_demo + p_crit + p_trans + p_clima) / 4
 
-if p_demo == 3 and p_crit == 3 and p_trans >= 2:
+if p_demo == 3 and p_crit == 3 and p_trans >= 3:
     nivel_riesgo = "ALTO (Intervención Preventiva Prioritaria)"
     color_risk = "red"
-elif score_total >= 2.5 or p_crit == 3:
+elif score_total >= 2.3:
     nivel_riesgo = "ALTO (Intervención Preventiva Prioritaria)"
     color_risk = "red"
 elif score_total >= 1.75:
@@ -88,7 +87,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.metric(label="Puntuación Global del Modelo", value=f"{score_total:.2f} / 3.0")
 with col2:
-    st.metric(label="Exposición Demográfica", value="Crítica (< 2 años)" if p_demo==3 else "Estable")
+    st.metric(label="Exposición Demográfica", value="Crítica (< 2 años)" if p_demo==3 else ("Estable" if p_demo==1 else "Moderada"))
 with col3:
     st.metric(label="Vulnerabilidad del Saber", value="Alta / Tácito" if p_crit==3 else "Controlada")
 
@@ -134,8 +133,8 @@ with tab2:
     elif "MEDIO" in nivel_riesgo:
         st.warning("⚠️ **Acciones de Intervención Programada:**")
         st.markdown("""
-        1. Actualizar manuales y repositorios de procesos documentales.
-        2. Fomentar talleres transversales y aprendizaje *on-the-job*.
+        1. Intervención programada a medio plazo. Formalización de parejas de aprendizaje y estructuración de documentación.
+        2. Fomentar talleres transversales y desarrollo de itinerarios de mentoría.
         """)
     else:
         st.success("✅ **Seguimiento Ordinario:**")

@@ -21,7 +21,8 @@ st.sidebar.header("⚙️ Parámetros de Evaluación del Puesto")
 st.sidebar.markdown("Selecciona o introduce los indicadores del perfil analizado:")
 
 # 1. Dimensión Demográfica
-st.sidebar.subheader("1. Dimensión Demográfica")
+st.sidebar.subheader("1. ED (Exposición Demográfica)")
+st.sidebar.caption("Evalúa la proximidad temporal a la jubilación y antigüedad.")
 horizonte_salida = st.sidebar.selectbox(
     "Horizonte temporal de jubilación/salida:",
     ["Más de 5 años (> 5 años) [Bajo]", "Entre 2 y 5 años [Medio]", "Menos de 2 años (< 2 años) [Alto]"],
@@ -30,7 +31,8 @@ horizonte_salida = st.sidebar.selectbox(
 antiguedad = st.sidebar.slider("Antigüedad en la empresa (años):", 1, 35, 18)
 
 # 2. Dimensión Conocimiento Crítico
-st.sidebar.subheader("2. Conocimiento Crítico")
+st.sidebar.subheader("2. CC (Conocimiento Crítico)")
+st.sidebar.caption("Evalúa el impacto operativo y la naturaleza tácita.")
 impacto_operativo = st.sidebar.selectbox(
     "Impacto operativo de la pérdida:",
     ["Bajo (Operativa rutinaria)", "Medio (Afecta parcialmente)", "Alto (Paralización o pérdida crítica)"],
@@ -43,7 +45,8 @@ nivel_tacito = st.sidebar.selectbox(
 )
 
 # 3. Dimensión Transferencia
-st.sidebar.subheader("3. Transferencia de Conocimiento")
+st.sidebar.subheader("3. IT (Insuficiencia de Transferencia)")
+st.sidebar.caption("Evalúa la presencia o ausencia de canales formales.")
 canales_transferencia = st.sidebar.selectbox(
     "Mecanismos de transferencia activos:",
     ["Mentoría formal y redes distribuidas [Protector]", "Canales informales cotidianos [Medio]", "Sin canales formales ni mentorías [Agravante]"],
@@ -51,7 +54,8 @@ canales_transferencia = st.sidebar.selectbox(
 )
 
 # 4. Dimensión Clima Organizacional
-st.sidebar.subheader("4. Clima Organizacional")
+st.sidebar.subheader("4. IC (Insuficiencia de Clima)")
+st.sidebar.caption("Evalúa la confianza, seguridad y colaboración.")
 clima_organizacional = st.sidebar.selectbox(
     "Clima y cultura de colaboración:",
     ["Alta confianza y seguridad psicológica [Protector]", "Clima neutro / moderado", "Clima competitivo o hermético [Agravante]"],
